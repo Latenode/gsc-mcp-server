@@ -27,6 +27,8 @@ This template removes all of it:
 
 Nothing runs on your machine.
 
+![The whole server: one entry point on the left, nine independent tool branches to the right](./assets/scenario-overview.png)
+
 ---
 
 ## The nine tools
@@ -48,6 +50,8 @@ All tools are read-only. The four marked ⭐ answer questions the Search Console
 ### How the analytical tools work
 
 **`compare_periods`** resolves the dates itself. Leave out the end of the current period and it uses today minus three days to allow for reporting lag; leave out the start and it counts back 28 days; name only one period and it takes an equally long stretch immediately before it. Both requests are locked to final data, so a partial recent day cannot manufacture a decline. Queries are labelled `up`, `down`, `flat`, `new` or `lost`, and anything under ten impressions in both periods is discarded as noise.
+
+![compare_periods returns both periods, a summary block, ranked gainers and losers, and a note on how to read them](./assets/compare-periods-output.png)
 
 **`find_striking_distance`** selects positions 8 to 20 with at least 50 impressions, estimates the clicks being left on the table, and returns the top 50 ranked by that estimate.
 
@@ -90,6 +94,8 @@ On the **MCP Trigger** node:
 1. Expand **Authentication**, switch it on and save the generated API key.
 2. In the **Path** section, switch from Development URL to **Production URL**.
 3. Copy the address.
+
+![The MCP Trigger step: the Path section with Production URL selected](./assets/mcp-trigger-production-url.png)
 
 Development URL is for testing while you edit the scenario. Clients you intend to keep using should point at the Production URL.
 
